@@ -1,0 +1,50 @@
+import numpy as np
+import astropy.units as u
+from ReadFile import Read
+
+def ParticleInfo(filename, particle_type, particle_number):
+    '''
+    This function returns the 3D distance, 3D velocity,
+    and mass of an object from a specified data file
+    
+    Inputs: filename as a string, particle_type (1 2 or 3) as an int,
+    particle_number as an int(which particle in specified type to be identified)
+
+    Returns: tuple of 3D distance in kpc, 3D velocity in km/s, and mass in Msun, all rounded to 3 decimal places 
+    '''
+    particle_index = particle_number - 1 #correcting requested number being one more than index (since index starts at zero)
+    kms = u.km/u.s #creating km/s unit from base AstroPy units
+    data_array = Read(filename)[2] #constructing data array from Read function in ReadFile.py
+    subtype_index = np.where(data_array['type'] == particle_type) #makes array of indices of all specified particle types
+    
+    distance = (data_array['x'][subtype_index][particle_index]**2 + data_array['y'][subtype_index][particle_index]**2 + data_array['z'][subtype_index][particle_index]**2)**(1/2) * u.kpc
+    #uses magnitude formula to extract 3D distance from cartesian components
+    
+    velocity = (data_array['vx'][subtype_index][particle_index]**2 + data_array['vy'][subtype_index][particle_index]**2 + data_array['vz'][subtype_index][particle_index]**2)**(1/2) * kms
+    #uses magnitude formula to extract 3D velocity from cartesian components
+    
+    mass = data_array['m'][subtype_index][particle_index] * 1e10 * u.Msun
+    #finds mass and converts to Msun units
+    
+    return distance.round(3), velocity.round(3), mass.round(3)
+    
+
+def ReadInput(filename, particle_type, particle_number):
+    '''
+    Creates a printed statement of particle information
+
+    Inputs: filename as a string, particle_type (1 2 or 3) as an int,
+    particle_number as an int(which particle in specified type to be identified)
+
+    Returns: a string of information containing 3D distance (in kpc and lyr), 3D velocity, and mass
+    '''
+    info_string = ("Number " + str(particle_number) + " type " +str(particle_type)+ " object has a 3D distance of " +
+          str(ParticleInfo(filename, particle_type, particle_number)[0])+
+          " (" +str(ParticleInfo(filename, particle_type, particle_number)[0].to(u.lyr))+ ")"+
+          ", a 3D velocity of " + str(ParticleInfo(filename, particle_type, particle_number)[1])+ ", and a mass of "+
+          str(ParticleInfo(filename, particle_type, particle_number)[2]))
+    return info_string
+
+print(ReadInput("MW_000.txt", 2, 100))
+
+

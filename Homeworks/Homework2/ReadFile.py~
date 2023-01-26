@@ -1,0 +1,22 @@
+import numpy as np
+import astropy.units as u
+def Read(filename):
+    info_file = open(filename, "r")
+    line1 = info_file.readline()
+    label, value = line1.split()
+    time = float(value) * u.Myr
+    line2 = info_file.readline()
+    label, value = line2.split()
+    num_particles = float(value)
+    info_file.close()
+    data = np.genfromtxt(filename, dtype = None, names = True, skip_header = 3)
+    return(time, num_particles, data)
+'''
+time = Read("MW_000.txt")[0]
+num_particles = Read("MW_000.txt")[1]
+data_array = Read("MW_000.txt")[2]
+print(data_array['type'][1])
+print(time)
+print(num_particles)
+'''
+
