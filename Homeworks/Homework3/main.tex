@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{comment}
+\usepackage{gensymb}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage[export]{adjustbox}
+\newcommand\tab[1][0.5cm]{\hspace*{#1}}
+
+
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}% blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage[utf8]{inputenc}
+\usepackage{comment}
+\usepackage{longtable}
+\usepackage{float}
+
+
+
+\begin{document}
+
+\title{ASTR400B HW3}
+\author{Aidan Nakhleh}
+\date{February 1 2023}
+
+
+\maketitle
+
+\section{Table}
+
+
+\begin{table}[h!]
+\begin{center}
+ \begin{tabular}{||c c c c c c||} 
+ \hline
+Galaxy Name & Halo Mass ($10^{12}\ M_\odot) $ & Disk Mass ($10^{12}\ M_\odot$) & Bulge Mass ($10^{12}\ M_\odot$) & Total ($10^{12}\ M_\odot$) & $f_{bar}$\\ [0.5ex]
+  \hline \hline
+Milky Way  & 1.975 & 0.075 & 0.01 & 2.06 & 0.041 \\
+\hline
+M31  & 1.921 & 0.12 &  0.019 & 2.06 & 0.067 \\
+\hline
+M33  &  0.187 & 0.009 & 0.00 & 0.196 & 0.046\\
+\hline
+ \end{tabular}
+ \caption{\label{tab:compton_data} Mass breakdown of 3 galaxies: the Milky Way, M31 (the Andromeda Galaxy), and M33 (the Triangulum Galaxy). The masses correspond to the total mass belonging to different regions of the galaxy, and $f_{bar}$ is the baryon fraction, or fraction of normal baryonic matter to total matter in the star, including dark matter.}
+\end{center}
+\end{table}
+
+\section{Questions}
+\begin{enumerate}
+
+
+\item The total mass of the Milky Way and M31 are the same in this simulation, likely to make the calculation more simple. In both cases, the Halo component (dark matter) dominates the total mass of the galaxy. 
+
+
+\item M31 has about 1.6 times the mass of the Milky Way, so I would expect M31 to be more luminous, since there is more mass that is available to contribute to the luminosity. 
+
+
+\item They have similar amounts of dark matter, with the Milky Way containing slightly more (1.028 times as much). This is surprising because there is much more normal stellar mass in M31, so it would be reasonable to assume there would be more dark matter as well, which is not the case. 
+
+
+\item The Milky Way's baryonic fraction is 0.041, M31's baryonic fraction is 0.067, and M33's baryonic fraction is 0.046. All of these fractions are much less than the Universe's baryonic fraction of 0.16, by roughly a factor of 2. This indicates that dark matter clumps around galaxies but may be less abundant in the circumgalactic medium, so when taking into account all of the total mass in the Universe that is not inside of galaxies, there is a higher concentration of baryonic matter to bring the fraction up by a factor of ~2. 
+\end{enumerate}
+\end{document}
